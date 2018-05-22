@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-layout',
+  styleUrls: ['./layout.component.scss'],
   template: `
     <router-outlet></router-outlet>
   `
 })
-export class AppComponent implements OnInit {
-
-  title = 'app';
+export class LayoutComponent implements OnInit {
 
   constructor() {
   }
 
   ngOnInit() {
   }
+
 }

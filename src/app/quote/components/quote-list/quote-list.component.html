@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="row">
+      <button class="btn btn-primary" (click)="startBroadcasting()">Start broadcaste</button>
+  </div>
+<div class="row" *ngIf="messages.length > 0">
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Symbol</th>
+          <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let message of messages; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{message.symbol}}</td>
+            <td>{{message.price}}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+</div>
+<div class="row" *ngIf="messages.length <= 0">
+  <span>No messages</span>
+</div>
+</div>
