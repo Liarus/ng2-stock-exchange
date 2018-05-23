@@ -41,7 +41,7 @@ export class LayoutComponent implements OnInit {
   constructor(private store: Store<fromLayout.State>) {
     debugger;
     this.menuItems = store.pipe(select(fromLayout.getMenuItems));
-    console.log(store.select(me => me));
+    console.log(store);
     this.isMobileView = store.pipe(select(fromLayout.getIsMobileView));
     this.menuItems.subscribe(e => {
       console.log(e);
