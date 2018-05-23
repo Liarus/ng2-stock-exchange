@@ -4,6 +4,6 @@ export const MENU = [
     {
         url: './app-quotes',
         title: 'Quotes',
-        icon: ''
+        icon: 'gavel'
     } as MenuItem
 ];

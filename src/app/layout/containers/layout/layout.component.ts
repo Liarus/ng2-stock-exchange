@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Store, select } from '@ngrx/store';
+
+import * as fromLayout from '../../state/reducers/index';
+import * as layout from '../../state/actions/layout';
+import { MenuItem } from '../../model/menuItem.model';
 
 @Component({
   selector: 'app-layout',
@@ -7,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
   <div class="layout-container">
     <mat-toolbar color="primary" class="layout-toolbar"
     >
-      <button (click)="snav.toggle()">Menu</button>
+      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
       <h1 class="layout-app-name">Responsive App</h1>
     </mat-toolbar>
     <mat-sidenav-container class="layout-sidenav-container">
@@ -15,7 +21,9 @@ import { Component, OnInit } from '@angular/core';
         fixedTopGap="56"
       >
         <mat-nav-list>
-          <a mat-list-item routerLink="{{nav.link}}" *ngFor="let nav of navItems">{{nav.name}}</a>
+          // <a mat-list-item routerLink="{{nav.url}}" *ngFor="let nav of (menuI|async)">
+          //   <mat-icon>{{nav.icon}}</mat-icon>{{nav.title}}
+          // </a>
         </mat-nav-list>
       </mat-sidenav>
       <mat-sidenav-content>
@@ -27,15 +35,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
-  navItems = [
-    { name: 'test', link: '.'},
-    { name: 'quotes', link: './app-quotes'}
-  ];
+  menuItems: Observable<MenuItem[]>;
+  isMobileView: Observable<boolean>;
 
-  constructor() {
+  constructor(private store: Store<fromLayout.State>) {
+    debugger;
+    this.menuItems = store.pipe(select(fromLayout.getMenuItems));
+    console.log(store.select(me => me));
+    this.isMobileView = store.pipe(select(fromLayout.getIsMobileView));
+    this.menuItems.subscribe(e => {
+      console.log(e);
+    });
   }
 
   ngOnInit() {
   }
-
 }

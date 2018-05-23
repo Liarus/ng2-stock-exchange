@@ -26,3 +26,18 @@ export const getMenuItems = createSelector(
     getLayoutState,
     fromLayout.getMenuItems
 );
+
+export const getWindowWidth = createSelector(
+    getLayoutState,
+    fromLayout.getWindowWidth
+);
+
+export const getWindowHeight = createSelector(
+    getLayoutState,
+    fromLayout.getWindowHeight
+);
+
+export const getIsMobileView = createSelector(
+    getLayoutState,
+    fromLayout.getIsMobileView
+);

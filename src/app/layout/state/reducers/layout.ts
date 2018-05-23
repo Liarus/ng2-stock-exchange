@@ -4,12 +4,18 @@ import { MENU } from '../../model/menu.model';
 
 export interface State {
     isSidebarExpanded: boolean;
+    isMobileView: boolean;
     menuItems: MenuItem[];
+    windowHeight: number;
+    windowWidth: number;
 }
 
 const initialState: State = {
     isSidebarExpanded: false,
-    menuItems: MENU
+    isMobileView: false,
+    menuItems: MENU,
+    windowHeight: window.screen.height,
+    windowWidth: window.screen.width
 };
 
 export function reducer(
@@ -31,6 +37,18 @@ export function reducer(
             };
         }
 
+        case fromLayout.LayoutActionTypes.ResizeWindow: {
+            const height: number = action.payload['height'];
+            const width: number = action.payload['width'];
+            const isMobile: boolean = width < 768 ? true : false;
+            return {
+              ...state,
+              windowHeight: height,
+              windowWidth: width,
+              isMobileView: isMobile
+            };
+        }
+
         default: {
             return state;
         }
@@ -39,3 +57,6 @@ export function reducer(
 
 export const getIsSidebarExpanded = (state: State) => state.isSidebarExpanded;
 export const getMenuItems = (state: State) => state.menuItems;
+export const getWindowWidth = (state: State) => state.windowWidth;
+export const getWindowHeight = (state: State) => state.windowHeight;
+export const getIsMobileView = (state: State) => state.isMobileView;
