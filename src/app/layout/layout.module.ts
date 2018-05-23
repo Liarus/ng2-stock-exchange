@@ -1,10 +1,11 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
 
 import { MaterialModule } from './../material/material.module';
 import { routing } from './layout.routing';
-
+import { reducers } from './state/reducers';
 
 import {
     LayoutComponent
@@ -22,7 +23,8 @@ const MODULE_PROVIDERS = [
         CommonModule,
         RouterModule,
         routing,
-        MaterialModule
+        MaterialModule,
+        StoreModule.forFeature('layout', reducers),
     ],
     declarations: [
         MODULE_COMPONENTS

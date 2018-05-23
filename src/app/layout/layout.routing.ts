@@ -6,7 +6,7 @@ import { LayoutComponent } from './containers';
 
 export const routes: Routes = [
     {
-        path: 'layout',
+        path: 'pages',
         component: LayoutComponent,
         children: [
             { path: 'app-quotes', loadChildren: '../quote/quote.module#QuoteModule' }

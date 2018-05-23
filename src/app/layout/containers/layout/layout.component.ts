@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   <div class="layout-container">
     <mat-toolbar color="primary" class="layout-toolbar"
     >
-      <button  (click)="snav.toggle()">Menu</button>
+      <button (click)="snav.toggle()">Menu</button>
       <h1 class="layout-app-name">Responsive App</h1>
     </mat-toolbar>
     <mat-sidenav-container class="layout-sidenav-container">
