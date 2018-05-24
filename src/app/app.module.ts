@@ -8,7 +8,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
-import { LayoutModule } from './layout/layout.module';
+import { CoreModule } from './core/core.module';
 import { routing } from './app.routing';
 import { reducers, metaReducers } from './state/reducers';
 import { environment } from '../environments/environment';
@@ -26,7 +26,7 @@ const APP_PROVIDERS = [
     BrowserAnimationsModule,
     RouterModule,
     HttpClientModule,
-    LayoutModule.forRoot(),
+    CoreModule.forRoot(),
     routing,
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule.forRoot({

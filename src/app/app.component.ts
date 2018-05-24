@@ -1,8 +1,8 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import * as fromLayout from './layout/state/reducers/index';
-import * as layout from './layout/state/actions/layout';
+import * as fromCore from './core/state/reducers/index';
+import * as layout from './core/state/actions/layout';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
 
   title = 'app';
 
-  constructor(private store: Store<fromLayout.State>) {
+  constructor(private store: Store<fromCore.State>) {
   }
 
   ngOnInit() {

@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 
 import { MaterialModule } from './../material/material.module';
-import { routing } from './layout.routing';
+import { routing } from './core.routing';
 import { reducers } from './state/reducers';
 
 import {
@@ -24,7 +24,7 @@ const MODULE_PROVIDERS = [
         RouterModule,
         routing,
         MaterialModule,
-        StoreModule.forFeature('layout', reducers),
+        StoreModule.forFeature('core', reducers),
     ],
     declarations: [
         MODULE_COMPONENTS
@@ -33,10 +33,10 @@ const MODULE_PROVIDERS = [
         MODULE_COMPONENTS
     ]
 })
-export class LayoutModule {
+export class CoreModule {
     static forRoot(): ModuleWithProviders {
         return <ModuleWithProviders> {
-            ngModule: LayoutModule,
+            ngModule: CoreModule,
             providers: [MODULE_PROVIDERS]
         };
     }

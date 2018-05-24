@@ -3,23 +3,23 @@ import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/s
 import * as fromLayout from './layout';
 import * as fromRoot from '../../../state/reducers';
 
-export interface LayoutState {
+export interface CoreState {
     layout: fromLayout.State;
 }
 
 export interface State extends fromRoot.State {
-    layout: LayoutState;
+    core: CoreState;
 }
 
-export const reducers: ActionReducerMap<LayoutState> = {
+export const reducers: ActionReducerMap<CoreState> = {
     layout: fromLayout.reducer
 };
 
-export const getLayoutState = createFeatureSelector<LayoutState>('layout');
+export const getLayoutState = createFeatureSelector<CoreState>('core');
 
 export const getCompleteLayoutState = createSelector(
     getLayoutState,
-    (state: LayoutState) => state.layout
+    (state: CoreState) => state.layout
 );
 
 export const getIsSidebarExpanded = createSelector(

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store, select } from '@ngrx/store';
 
-import * as fromLayout from '../../state/reducers/index';
+import * as fromCore from '../../state/reducers/index';
 import * as layout from '../../state/actions/layout';
 import { MenuItem } from '../../model/menuItem.model';
 
@@ -38,9 +38,9 @@ export class LayoutComponent implements OnInit {
   menuItems: Observable<MenuItem[]>;
   isMobileView: Observable<boolean>;
 
-  constructor(private store: Store<fromLayout.State>) {
-    this.menuItems = store.pipe(select(fromLayout.getMenuItems));
-    this.isMobileView = store.pipe(select(fromLayout.getIsMobileView));
+  constructor(private store: Store<fromCore.State>) {
+    this.menuItems = store.pipe(select(fromCore.getMenuItems));
+    this.isMobileView = store.pipe(select(fromCore.getIsMobileView));
   }
 
   ngOnInit() {
