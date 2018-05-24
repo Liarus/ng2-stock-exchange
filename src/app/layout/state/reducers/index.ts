@@ -15,29 +15,34 @@ export const reducers: ActionReducerMap<LayoutState> = {
     layout: fromLayout.reducer
 };
 
-export const getLayoutState = createFeatureSelector<fromLayout.State>('layout');
+export const getLayoutState = createFeatureSelector<LayoutState>('layout');
+
+export const getCompleteLayoutState = createSelector(
+    getLayoutState,
+    (state: LayoutState) => state.layout
+);
 
 export const getIsSidebarExpanded = createSelector(
-    getLayoutState,
+    getCompleteLayoutState,
     fromLayout.getIsSidebarExpanded
 );
 
 export const getMenuItems = createSelector(
-    getLayoutState,
+    getCompleteLayoutState,
     fromLayout.getMenuItems
 );
 
 export const getWindowWidth = createSelector(
-    getLayoutState,
+    getCompleteLayoutState,
     fromLayout.getWindowWidth
 );
 
 export const getWindowHeight = createSelector(
-    getLayoutState,
+    getCompleteLayoutState,
     fromLayout.getWindowHeight
 );
 
 export const getIsMobileView = createSelector(
-    getLayoutState,
+    getCompleteLayoutState,
     fromLayout.getIsMobileView
 );

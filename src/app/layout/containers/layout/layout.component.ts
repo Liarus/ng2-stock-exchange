@@ -21,9 +21,9 @@ import { MenuItem } from '../../model/menuItem.model';
         fixedTopGap="56"
       >
         <mat-nav-list>
-          // <a mat-list-item routerLink="{{nav.url}}" *ngFor="let nav of (menuI|async)">
-          //   <mat-icon>{{nav.icon}}</mat-icon>{{nav.title}}
-          // </a>
+          <a mat-list-item routerLink="{{nav.url}}" *ngFor="let nav of (menuItems|async)">
+            <mat-icon>{{nav.icon}}</mat-icon>{{nav.title}}
+          </a>
         </mat-nav-list>
       </mat-sidenav>
       <mat-sidenav-content>
@@ -39,13 +39,8 @@ export class LayoutComponent implements OnInit {
   isMobileView: Observable<boolean>;
 
   constructor(private store: Store<fromLayout.State>) {
-    debugger;
     this.menuItems = store.pipe(select(fromLayout.getMenuItems));
-    console.log(store);
     this.isMobileView = store.pipe(select(fromLayout.getIsMobileView));
-    this.menuItems.subscribe(e => {
-      console.log(e);
-    });
   }
 
   ngOnInit() {

@@ -10,7 +10,7 @@ export interface State {
     windowWidth: number;
 }
 
-const initialState: State = {
+export const initialState: State = {
     isSidebarExpanded: false,
     isMobileView: false,
     menuItems: MENU,
